@@ -27,9 +27,9 @@ function App() {
                     {/* <StoreProvider> */}
                         
                     <Route 
-                path="/" 
-                element={<Home />} 
-              />
+                        path="/" 
+                        element={<Home />} 
+                    />
               
                     {/* </StoreProvider> */}
                     </Routes>

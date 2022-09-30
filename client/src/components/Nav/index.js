@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function Nav() {
 
-//   function showNavigation() {
+  function showNavigation() {
     // if (Auth.loggedIn()) {
     //   return (
     //     <ul className="flex-row">
@@ -22,22 +22,27 @@ function Nav() {
     //     </ul>
     //   );
     // } else {
-//       return (
-//         <ul className="flex-row">
-//           <li className="mx-1">
-//             <Link to="/signup">
-//               Signup
-//             </Link>
-//           </li>
-//           <li className="mx-1">
-//             <Link to="/login">
-//               Login
-//             </Link>
-//           </li>
-//         </ul>
-//       );
-//     }
-//   }
+      return (
+        <ul className="flex-row">
+            <li className="mx-1">
+                Concessions
+            </li>
+            <li className="mx-1">
+                Tables, Linens, and Chairs
+            </li>
+            <li className="mx-1">
+                Slides
+            </li>
+            <li className="mx-1">
+                Plates, Glassware, and Silverware
+            </li>
+            <li className="mx-1">
+                Tents
+            </li>
+        </ul>
+      );
+    }
+  
 
   return (
     <header className="flex-row px-1">
@@ -47,10 +52,14 @@ function Nav() {
           Rent-A-Party  
         </Link>
       </h1>
+      <div>
+       
+      </div>
 
-      {/* <nav>
+
+      <nav>
         {showNavigation()}
-      </nav> */}
+      </nav>
     </header>
   );
 }
