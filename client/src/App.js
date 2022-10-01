@@ -10,9 +10,9 @@ import {
 import Home from './pages/Home';
 import Nav from './components/Nav';
 
-const httpLink = createHttpLink({
-    uri: '/graphql',
-  });
+// const httpLink = createHttpLink({
+//     uri: '/graphql',
+//   });
 
 //need token and memory caches here?
 
