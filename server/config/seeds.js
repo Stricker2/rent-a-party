@@ -153,6 +153,7 @@ db.once('open', async () => {
             quantity: 75
         }
     ]);
+    //Help with this
     console.log(products);
 
     console.log('products seeded');

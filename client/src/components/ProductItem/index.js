@@ -11,7 +11,8 @@ function ProductItem(item) {
   const {
     image,
     name,
-   // _id,
+    //needed?
+    _id,
     price,
     quantity
   } = item;

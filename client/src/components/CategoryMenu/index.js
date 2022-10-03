@@ -48,7 +48,7 @@ function CategoryMenu() {
         <button
           key={item.name}
           onClick={() => {
-            handleClick(item._id);
+            handleClick(item.name);
           }}
         >
           {item.name}
