@@ -6,23 +6,30 @@ function Nav() {
 
   function showNavigation() {
       return (
-        <ul className="flex-row">
-            <li className="mx-1">
-                Concessions
-            </li>
-            <li className="mx-1">
-                Tables, Linens, and Chairs
-            </li>
-            <li className="mx-1">
-                Slides
-            </li>
-            <li className="mx-1">
-                Plates, Glassware, and Silverware
-            </li>
-            <li className="mx-1">
-                Tents
-            </li>
-        </ul>
+            <ul className="flex-row">
+                <li className="mx-1">
+                    <Link to="/contact">
+                        Contact
+                    </Link>
+                </li>
+            </ul>
+        // <ul className="flex-row">
+        //     <li className="mx-1">
+        //         Concessions
+        //     </li>
+        //     <li className="mx-1">
+        //         Tables, Linens, and Chairs
+        //     </li>
+        //     <li className="mx-1">
+        //         Slides
+        //     </li>
+        //     <li className="mx-1">
+        //         Plates, Glassware, and Silverware
+        //     </li>
+        //     <li className="mx-1">
+        //         Tents
+        //     </li>
+        // </ul>
       );
     }
   
