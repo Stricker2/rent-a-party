@@ -22,7 +22,7 @@ db.once('open', async () => {
             description:
                 'Standard 20x20 tent. Smallest size available.',
             image: '../../client/public/images/smalltent.jpeg', 
-            category: cateogories[4]._id,
+            category: categories[4]._id,
             price: 200.00,
             quantity: 20
         },
@@ -153,10 +153,11 @@ db.once('open', async () => {
             quantity: 75
         }
     ]);
+    console.log(products);
 
     console.log('products seeded');
 
-    await User.deleteMany();
+    //await User.deleteMany();
 
     process.exit();
 });
