@@ -1,1 +1,1 @@
-# rent-a-party
+# Rent A Party
