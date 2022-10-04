@@ -1,14 +1,15 @@
-/* :root {
-    --primary: #232F3E;
-    --secondary: #F3A847;
-    --tertiary: #B12704;
-    --light: #fafafa;
-    --dark: #272f32;
-    --error: rgb(228, 46, 1);
+:root {
+    --primary: #2EAF7D;
+    --secondary: #3FD0C9;
+    --tertiary: #449342;
+    --light: #C1F6ED;
+    --dark: #02353C;
+    /* --error: rgb(228, 46, 1); */
+    --error: #F1B24A;
     --spacing-one: calc(1rem * 0.5);
     --spacing-two: calc(1rem);
   }
-  
+  /*
   * {
     box-sizing: border-box;
   }
