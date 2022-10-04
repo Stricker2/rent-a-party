@@ -163,9 +163,14 @@ db.once('open', async () => {
         lastName: 'Smith',
         email: 'joe@testemail.com',
         password: 'password12345',
+        orders: [
+            {
+                products: [products[3]._id, products[5]._id, products[6]._id]
+            }
+        ]
     });
 
-    console.log('users seeded');
+    console.log('user seeded');
 
     process.exit();
 });
