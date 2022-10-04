@@ -22,7 +22,7 @@ db.once('open', async () => {
             description:
                 'Standard 20x20 tent. Smallest size available.',
             image: '#',
-            category: cateogories[4]._id,
+            category: categories[4]._id,
             price: 200.00,
             quantity: 20
         },
