@@ -156,5 +156,16 @@ db.once('open', async () => {
 
     console.log('products seeded');
 
+    await User.deleteMany();
+    
+    await User.create({
+        firstName: 'Joe',
+        lastName: 'Smith',
+        email: 'joe@testemail.com',
+        password: 'password12345',
+    });
+
+    console.log('users seeded');
+
     process.exit();
 });
