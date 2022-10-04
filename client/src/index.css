@@ -9,7 +9,7 @@
     --spacing-one: calc(1rem * 0.5);
     --spacing-two: calc(1rem);
   }
-  /*
+  
   * {
     box-sizing: border-box;
   }
@@ -19,6 +19,7 @@
     min-height: 100%;
   }
   
+  /*
   body {
     margin: 0;
     padding: 0;
@@ -200,6 +201,8 @@
     text-align: center;
   }
   
+  */
+  
   .error-text {
     color: var(--error);
   }
@@ -208,4 +211,4 @@
     .card {
       width: 100%;
     }
-  } */
+  }
