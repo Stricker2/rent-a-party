@@ -14,25 +14,31 @@ const server = new ApolloServer({
   context: authMiddleware
 });
 
-server.applyMiddleware({ app });
+const startApollo = async () => {
+    await server.start()
+    server.applyMiddleware({ app });
+    db.once('open', () => {
+        app.listen(PORT, () => {
+          console.log(`API server running on port ${PORT}!`);
+          console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+        });
+      });
+}
+
+
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 //forthcoming 
-app.use('/images', express.static(path.join(__dirname, '../client/images')));
+app.use('/images', express.static(path.join(__dirname, '../client/public/images')));
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
 }
+// CAN PROBABLY COMMENT BACK IN WHEN READY TO DEPLOY - KEEP COMMENTED OUT DURING DEVELOP PHASE
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '../client/build/index.html'));
+// });
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build/index.html'));
-});
-
-db.once('open', () => {
-  app.listen(PORT, () => {
-    console.log(`API server running on port ${PORT}!`);
-    console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
-  });
-});
+startApollo();

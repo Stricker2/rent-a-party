@@ -41,7 +41,9 @@ function App() {
                 <div>
                     <StoreProvider>
                         <Nav />
+                        
                         <Routes>
+                        Hello
                             <Route 
                                 path="/"
                                 elment={<Home />}
