@@ -196,13 +196,13 @@
     padding-bottom: var(--spacing-two);
   }
   
+  */
+
   .card {
     width: 25%;
     text-align: center;
   }
-  
-  */
-  
+
   .error-text {
     color: var(--error);
   }
@@ -212,3 +212,4 @@
       width: 100%;
     }
   }
+  
