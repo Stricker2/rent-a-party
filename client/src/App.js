@@ -1,43 +1,59 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
-    // ApolloClient,
-    // InMemoryCache,
-    // ApolloProvider,
+    ApolloClient,
+    InMemoryCache,
+    ApolloProvider,
     createHttpLink,
-  } from '@apollo/client';
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 
 import Home from './pages/Home';
 import Nav from './components/Nav';
+import Detail from './pages/Detail';
+import { StoreProvider } from './utils/GlobalState';
 
-// const httpLink = createHttpLink({
-//     uri: '/graphql',
-//   });
+const httpLink = createHttpLink({
+    uri: '/graphql',
+});
 
-//need token and memory caches here?
+const authLink = setContext((_, { headers }) => {
+    const token = localStorage.getItem('id_token');
+    return {
+        headers: {
+            ...headers,
+            authorization: token ? `Bearer ${token}` : '',
+        },
+    };
+});
 
+const client = new ApolloClient({
+    link: authLink.concat(httpLink),
+    cache: new InMemoryCache(),
+});
 
 function App() {
     return (
-        //<ApolloProvider client={client}>
+        <ApolloProvider client={client}>
             <Router>
                 <div>
-                <Nav />
-                    <Routes>
-                    {/* <StoreProvider> */}
-                        
-                    <Route 
-                        path="/" 
-                        element={<Home />} 
-                    />
-              
-                    {/* </StoreProvider> */}
-                    </Routes>
+                    <StoreProvider>
+                        <Nav />
+                        <Routes>
+                            <Route
+                                path="/"
+                                element={<Home />}
+                            />
+                            <Route
+                                path="/products/:id"
+                                element={<Detail />}
+                            />
+                        </Routes>
+                    </StoreProvider>
                 </div>
             </Router>
-       // </ApolloProvider>
+        </ApolloProvider>
     );
 }
-
 
 export default App;
