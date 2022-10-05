@@ -11,6 +11,8 @@ import { setContext } from '@apollo/client/link/context';
 import Home from './pages/Home';
 import Nav from './components/Nav';
 import Detail from './pages/Detail';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 import { StoreProvider } from './utils/GlobalState';
 
 const httpLink = createHttpLink({
@@ -48,6 +50,14 @@ function App() {
                                 path="/products/:id"
                                 element={<Detail />}
                             />
+                            <Route 
+                                path="/login" 
+                                element={<Login />} 
+                              />
+                              <Route 
+                                path="/signup" 
+                                element={<Signup />} 
+                              />
                         </Routes>
                     </StoreProvider>
                 </div>
