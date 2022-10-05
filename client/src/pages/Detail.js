@@ -23,7 +23,7 @@ function Detail() {
   const { products, cart } = state;
 
   const addToCart = () => {
-    const itemInCart = cart.find((cartItem) => cartItem._id === id);
+    const itemInCart = cart.find((cartItem) => cartItem._id === id)
 
     if (itemInCart) {
       dispatch({
@@ -31,36 +31,46 @@ function Detail() {
         _id: id,
         purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
       });
+      // if updating quantity, use existing item data and increment quantity by one
+      idbPromise('cart', 'put', {
+        ...itemInCart,
+        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+      });
     } else {
       dispatch({
         type: ADD_TO_CART,
         product: { ...currentProduct, purchaseQuantity: 1 }
       });
+      // if product isn't in the cart yet, add it to the current shopping cart in the DB
+      idbPromise('cart', 'put', { ...currentProduct, purchaseQuantity: 1 });
     }
-  };
+  }
 
   const removeFromCart = () => {
     dispatch({
       type: REMOVE_FROM_CART,
       _id: currentProduct._id
     });
+  
+//remove item from indexedDB
+    idbPromise('cart', 'delete', { ...currentProduct });
   };
 
   useEffect(() => {
     if (products.length) {
       setCurrentProduct(products.find(product => product._id === id));
-    } 
+    }
     else if (data) {
       dispatch({
         type: UPDATE_PRODUCTS,
         products: data.products
       });
-  
+
       data.products.forEach((product) => {
         idbPromise('products', 'put', product);
       });
     }
-    else if(!loading) {
+    else if (!loading) {
       idbPromise('products', 'get').then((indexedProducts) => {
         dispatch({
           type: UPDATE_PRODUCTS,
