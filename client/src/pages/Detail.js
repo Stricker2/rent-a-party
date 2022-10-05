@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-
+import Cart from '../components/Cart';
 import { useStoreContext } from '../utils/GlobalState';
 import {
   REMOVE_FROM_CART,
@@ -19,12 +19,29 @@ function Detail() {
 
   const { data } = useQuery(QUERY_PRODUCTS);
 
-  const { products } = state;
+  const { products, cart } = state;
 
   const addToCart = () => {
+    const itemInCart = cart.find((cartItem) => cartItem._id === id);
+
+    if (itemInCart) {
+      dispatch({
+        type: UPDATE_CART_QUANTITY,
+        _id: id,
+        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+      });
+    } else {
+      dispatch({
+        type: ADD_TO_CART,
+        product: { ...currentProduct, purchaseQuantity: 1 }
+      });
+    }
+  };
+
+  const removeFromCart = () => {
     dispatch({
-      type: ADD_TO_CART,
-      product: { ...currentProduct, purchaseQuanity: 1 }
+      type: REMOVE_FROM_CART,
+      _id: currentProduct._id
     });
   };
 
@@ -52,7 +69,12 @@ function Detail() {
           <p>
             <strong>Price:</strong>${currentProduct.price}{' '}
             <button onClick={addToCart}>Add to cart</button>
-            <button>Remove from Cart</button>
+            <button
+              disabled={!cart.find(p => p._id === currentProduct._id)}
+              onClick={removeFromCart}
+            >
+              Remove from Cart
+            </button>
           </p>
 
           <img
@@ -61,6 +83,7 @@ function Detail() {
           />
         </div>
       ) : null}
+      <Cart />
     </>
   );
 }

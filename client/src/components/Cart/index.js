@@ -29,7 +29,6 @@ const Cart = () => {
       </div>
     );
   }
-  console.log(state)
   return (
     <div className="cart">
       <div className="close" onClick={toggleCart}>[close]</div>
