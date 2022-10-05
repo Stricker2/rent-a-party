@@ -39,6 +39,12 @@ To use the project, clone the code to your own GitHub repository and install dep
 npm install
 ```
 
+Install the seeds file by running the following in the command line:
+
+```
+npm run seed
+```
+
 ## Usage
 After installing, run the program by typing the following in the command line:
 
