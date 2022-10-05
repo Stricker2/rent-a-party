@@ -10,6 +10,7 @@ import {
   UPDATE_PRODUCTS,
 } from '../utils/actions';
 import { QUERY_PRODUCTS } from '../utils/queries';
+import { idbPromise } from "../utils/helpers";
 
 function Detail() {
   const [state, dispatch] = useStoreContext();
@@ -17,7 +18,7 @@ function Detail() {
 
   const [currentProduct, setCurrentProduct] = useState({});
 
-  const { data } = useQuery(QUERY_PRODUCTS);
+  const { loading, data } = useQuery(QUERY_PRODUCTS);
 
   const { products, cart } = state;
 
@@ -47,14 +48,27 @@ function Detail() {
 
   useEffect(() => {
     if (products.length) {
-      setCurrentProduct(products.find((product) => product._id === id));
-    } else if (data) {
+      setCurrentProduct(products.find(product => product._id === id));
+    } 
+    else if (data) {
       dispatch({
         type: UPDATE_PRODUCTS,
-        products: data.products,
+        products: data.products
+      });
+  
+      data.products.forEach((product) => {
+        idbPromise('products', 'put', product);
       });
     }
-  }, [products, data, dispatch, id]);
+    else if(!loading) {
+      idbPromise('products', 'get').then((indexedProducts) => {
+        dispatch({
+          type: UPDATE_PRODUCTS,
+          products: indexedProducts
+        });
+      });
+    }
+  }, [products, data, loading, dispatch, id]);
 
   return (
     <>
