@@ -3,7 +3,12 @@ import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
 import { useStoreContext } from '../utils/GlobalState';
-import { UPDATE_PRODUCTS } from '../utils/actions';
+import {
+  REMOVE_FROM_CART,
+  UPDATE_CART_QUANTITY,
+  ADD_TO_CART,
+  UPDATE_PRODUCTS,
+} from '../utils/actions';
 import { QUERY_PRODUCTS } from '../utils/queries';
 
 function Detail() {
@@ -15,6 +20,13 @@ function Detail() {
   const { data } = useQuery(QUERY_PRODUCTS);
 
   const { products } = state;
+
+  const addToCart = () => {
+    dispatch({
+      type: ADD_TO_CART,
+      product: { ...currentProduct, purchaseQuanity: 1 }
+    });
+  };
 
   useEffect(() => {
     if (products.length) {
@@ -39,7 +51,7 @@ function Detail() {
 
           <p>
             <strong>Price:</strong>${currentProduct.price}{' '}
-            <button>Add to Cart</button>
+            <button onClick={addToCart}>Add to cart</button>
             <button>Remove from Cart</button>
           </p>
 
