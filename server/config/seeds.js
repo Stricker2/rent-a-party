@@ -1,5 +1,5 @@
 const db = require('./connection');
-const { Product, Category } = require('../models');
+const { User, Product, Category } = require('../models');
 
 db.once('open', async () => {
     await Category.deleteMany();
@@ -21,7 +21,7 @@ db.once('open', async () => {
             name: 'Small Tent',
             description:
                 'Standard 20x20 tent. Smallest size available.',
-            image: '#',
+            image: 'smalltent.jpeg',
             category: categories[4]._id,
             price: 200.00,
             quantity: 20
@@ -30,7 +30,7 @@ db.once('open', async () => {
             name: 'Large Tent',
             description:
                 'Standard 20x40 tent. Largest size available.',
-            image: '#',
+            image: 'largetent.jpg',
             category: categories[4]._id,
             price: 300.00,
             quantity: 10
@@ -39,7 +39,7 @@ db.once('open', async () => {
             name: 'Snow Cone Machine',
             description:
                 'Snow cone machine. Rental of this equipment includes 5 syrups (Cherry, Blue Raspberry, Grape, Green Apple, and Mango). NOTE:A liability form will need to be signed if you plan on operating the machine yourself without the assitance of a event employee (Event employee not included in this price).',
-            image: '#',
+            image: 'snowconemachine.jpeg',
             category: categories[0]._id,
             price: 150.00,
             quantity: 5
@@ -48,7 +48,7 @@ db.once('open', async () => {
             name: 'Cotton Candy Machine',
             description:
                 'Standard Cotton candy machine. A liability form will need to be signed if you plan on operating the machine yourself without the assitance of a event employee (Event employee not included in this price).',
-            image: '#',
+            image: 'cottoncandy.jpg',
             category: categories[0]._id,
             price: 150.00,
             quantity: 5
@@ -57,7 +57,7 @@ db.once('open', async () => {
             name: 'Rectagular Table',
             description:
                 '6ft rectagular wooden table with collapsable legs.',
-            image: '#',
+            image: 'rectangletable.jpg',
             category: categories[1]._id,
             price: 50.00,
             quantity: 50
@@ -66,7 +66,7 @@ db.once('open', async () => {
             name: 'Round Table',
             description:
                 '5ft round wooden table with collapsable legs.',
-            image: '#',
+            image: 'roundtable.jpg',
             category: categories[1]._id,
             price: 50.00,
             quantity: 50
@@ -75,7 +75,7 @@ db.once('open', async () => {
             name: 'Black Folding Chairs',
             description:
                 'Black folding chairs',
-            image: '#',
+            image: 'blackchair.jpeg',
             category: categories[1]._id,
             price: 5.00,
             quantity: 100
@@ -84,7 +84,7 @@ db.once('open', async () => {
             name: 'White Folding Table',
             description:
                 'White folding chairs',
-            image: '#',
+            image: 'whitechairs.jpg',
             category: categories[1]._id,
             price: 5.00,
             quantity: 100
@@ -93,7 +93,7 @@ db.once('open', async () => {
             name: 'Round Tablecloths',
             description:
                 'Large white tablecloths able to cover our round tables.',
-            image: '#',
+            image: 'roundcloth.jpeg',
             category: categories[1]._id,
             price: 20.00,
             quantity: 50
@@ -102,7 +102,7 @@ db.once('open', async () => {
             name: 'Rectangular Tablecloths',
             description:
                 'Large white tablecloths able to cover our rectangular tables.',
-            image: '#',
+            image: 'rectanglecloth.jpg',
             category: categories[1]._id,
             price: 20.00,
             quantity: 50
@@ -111,7 +111,7 @@ db.once('open', async () => {
             name: 'Dry Slide',
             description:
                 'Inflatable, 18ft tall dry slide.',
-            image: '#',
+            image: 'dryslide.jpeg',
             category: categories[2]._id,
             price: 300.00,
             quantity: 5
@@ -120,7 +120,7 @@ db.once('open', async () => {
             name: 'Water Slide',
             description:
                 'Inflatable, 18ft tall water slide.',
-            image: '#',
+            image: 'wetslide.jpeg',
             category: categories[2]._id,
             price: 350.00,
             quantity: 5
@@ -129,7 +129,7 @@ db.once('open', async () => {
             name: 'Drinkware',
             description:
                 'Set of a dozen 12oz cups',
-            image: '#',
+            image: 'cups.jpeg',
             category: categories[3]._id,
             price: 2.00,
             quantity: 75
@@ -138,7 +138,7 @@ db.once('open', async () => {
             name: 'Plates',
             description:
                 'Set of 6 plates.',
-            image: '#',
+            image: 'plates.jpeg',
             category: categories[3]._id,
             price: 2.00,
             quantity: 75
@@ -147,7 +147,7 @@ db.once('open', async () => {
             name: 'Plasticware',
             description:
                 'Set of 24 forks, knives, and spoons.',
-            image: '#',
+            image: 'plasticware.jpg',
             category: categories[3]._id,
             price: 5.00,
             quantity: 75
@@ -155,6 +155,22 @@ db.once('open', async () => {
     ]);
 
     console.log('products seeded');
+
+    await User.deleteMany();
+    
+    await User.create({
+        firstName: 'Joe',
+        lastName: 'Smith',
+        email: 'joe@testemail.com',
+        password: 'password12345',
+        orders: [
+            {
+                products: [products[3]._id, products[5]._id, products[6]._id]
+            }
+        ]
+    });
+
+    console.log('user seeded');
 
     process.exit();
 });
