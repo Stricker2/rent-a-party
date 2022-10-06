@@ -19,7 +19,6 @@
     min-height: 100%;
   }
   
-  /*
   body {
     margin: 0;
     padding: 0;
@@ -196,7 +195,6 @@
     padding-bottom: var(--spacing-two);
   }
   
-  */
 
   .card {
     width: 25%;
@@ -212,4 +210,3 @@
       width: 100%;
     }
   }
-  
