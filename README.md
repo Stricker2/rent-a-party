@@ -38,6 +38,8 @@ This project was created with the following technologies:
 
 -JWT Authentication
 
+-CSS
+
 It utilizes queries and mutations for retrieving, adding, updating, and deleting data. 
 
 
