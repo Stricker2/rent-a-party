@@ -21,15 +21,24 @@ This was completed as part of a group project at the culumination of the full-st
 
 ## Technology Used
 This project was created with the following technologies:
+
 -Javascript
+
 -Node.js
+
 -Express.js
+
 -MongoDB
+
 -Mongoose ODM
+
 -GraphQL
+
 -React
+
 -JWT Authentication
--It utilizes queries and mutations for retrieving, adding, updating, and deleting data. 
+
+It utilizes queries and mutations for retrieving, adding, updating, and deleting data. 
 
 
 ## Installation
@@ -37,6 +46,11 @@ To use the project, clone the code to your own GitHub repository and install dep
 
 ```
 npm install
+```
+
+Run seeds to populate the products with:
+```
+npm run seed
 ```
 
 ## Usage
@@ -53,4 +67,10 @@ You can view the deployed application on Heroku at:
 
 ## More Information
 This application was created by:
-<!-- Add Github usernames? Email addresses? -->
+Miller DiCarlo: https://github.com//millerdicarlo
+
+Andrew Secore: https://github.com/Stricker2
+
+Bethany Shoun: https://github.com/bethanyshoun
+
+Christian Spence: https://github.com/christianmspence
