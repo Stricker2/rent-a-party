@@ -61,8 +61,9 @@ npm run develop
 ```
 
 ## Heroku Deployment
-You can view the deployed application on Heroku at: 
-<!-- Update screenshot once site is deployed -->
+### You can view the deployed application on Heroku at: https://rent-a-party2022.herokuapp.com/
+
+### Screenshot of Deployed Application:
 ![Screenshot](./client/public/Rent-A-Party.png)
 
 ## More Information
