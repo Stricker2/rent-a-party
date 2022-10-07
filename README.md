@@ -63,10 +63,11 @@ npm run develop
 ## Heroku Deployment
 You can view the deployed application on Heroku at: 
 <!-- Update screenshot once site is deployed -->
-![Screenshot](/screenshot.png)
+![Screenshot](./client/public/Rent-A-Party.png)
 
 ## More Information
 This application was created by:
+
 Miller DiCarlo: https://github.com//millerdicarlo
 
 Andrew Secore: https://github.com/Stricker2
